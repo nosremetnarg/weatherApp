@@ -10,37 +10,8 @@ var desc = document.querySelector('.desc');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
-var weatherIcon = document.getElementById('#icon')
-
-// working for single day weather search
-// button.addEventListener('click', function (name) {
-//   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=eba23db029bb076b1335ac28a0b028bb')
-//     .then(response => response.json())
-//     .then(data => {
-//     console.log(data)
-//     // {
-//       var tempValue = data['main']['temp'];
-//       var nameValue = data['name'];
-//       var descValue = data['weather'][0]['description'];
-//       var iconValue = document.createElement('img')
-//       iconValue.setAttribute('src', "http://openweathermap.org/img/w/" + data['weather'][0]['icon'] + ".png");
-//       var windValue = data['wind']['speed'];
-//       var humidityValue = data['main']['humidity'];
-//       var convertedTemp = tempValue * 9 / 5 - 459.67;
-//       // var convertedTempCelcius = (convertedTemp - 32) * 5/9; 
-//       main.innerHTML = nameValue;
-//       desc.innerHTML = descValue;
-//       desc.appendChild(iconValue);
-//       temp.innerHTML = "Temperature - " + Math.floor(convertedTemp) + "°F";
-//       wind.innerHTML = "Wind Speed - " + windValue + "mph";
-//       humidity.innerHTML = "Humidity - " + humidityValue + "%";
-//       //   weatherIcon.innerHTML = iconValue;
-//       input.value = "";
-//     })
-
-
-//     .catch(err => alert("Wrong city name!"));
-// })
+var weatherIcon = document.getElementById('#icon');
+var dayOneTemp = document.getElementById('.dayOneTemp')
 
 
 // searching for single day and 5-day forecast
@@ -58,6 +29,8 @@ button.addEventListener('click', function (name) {
     for (i = 0; i < data[1].list.length; i = i + 8) {
       console.log("list", data[1].list[i].main.temp_max);
       // console.log(i);
+      var dayOneTempValue = data[1].list[0].main.temp_max;
+      dayOneTemp.innerHTML = dayOneTempValue;
     }
     var tempValue = data[0]['main']['temp'];
     // var tempValue = data[1]['list']['main']['temp'];
@@ -78,6 +51,8 @@ button.addEventListener('click', function (name) {
     humidity.innerHTML = "Humidity - " + humidityValue + "%";
     //   weatherIcon.innerHTML = iconValue;
     input.value = "";
+
+    
   }).catch(function (error) {
     console.log(error);
     alert("Wrong city name!")
@@ -129,3 +104,34 @@ button.addEventListener('click', function (name) {
         //             });
         //     });
         // }
+
+
+        // working for single day weather search
+// button.addEventListener('click', function (name) {
+//   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=eba23db029bb076b1335ac28a0b028bb')
+//     .then(response => response.json())
+//     .then(data => {
+//     console.log(data)
+//     // {
+//       var tempValue = data['main']['temp'];
+//       var nameValue = data['name'];
+//       var descValue = data['weather'][0]['description'];
+//       var iconValue = document.createElement('img')
+//       iconValue.setAttribute('src', "http://openweathermap.org/img/w/" + data['weather'][0]['icon'] + ".png");
+//       var windValue = data['wind']['speed'];
+//       var humidityValue = data['main']['humidity'];
+//       var convertedTemp = tempValue * 9 / 5 - 459.67;
+//       // var convertedTempCelcius = (convertedTemp - 32) * 5/9; 
+//       main.innerHTML = nameValue;
+//       desc.innerHTML = descValue;
+//       desc.appendChild(iconValue);
+//       temp.innerHTML = "Temperature - " + Math.floor(convertedTemp) + "°F";
+//       wind.innerHTML = "Wind Speed - " + windValue + "mph";
+//       humidity.innerHTML = "Humidity - " + humidityValue + "%";
+//       //   weatherIcon.innerHTML = iconValue;
+//       input.value = "";
+//     })
+
+
+//     .catch(err => alert("Wrong city name!"));
+// })

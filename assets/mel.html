@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+​
+<body>
+​
+    <header>
+        <h1>Weather Dashboard</h1>  
+        
+​
+    </header>
+    <p id="currentDay" class="lead"></p>
+​
+    <div class="row">
+        <div class="searchbox col-12 col-lg-3 bg-dark text-light d-flex flex-column p-4 p-lg-3 m-5">
+            <div>Search for a city: <input type="text" id="searchCity" value="City" />
+                <button id="searchButton">Search!</button>
+                <!-- <button onclick="getSearchTerm()">Search!</button> -->
+            </div>
+            <!--append child history of previously searched cities-->
+            <h6>Previously Searched:<span id="previous-search"></span></h6>
+            <div id="history-container" class="list-group col-3">
+                <ul class="history">
+​
+                </ul>
+            </div>       
+​
+        </div>
+         <!--Container with city, date, and results-->
+         <div class="p-4 p-lg-3 m-5 col-7 bg-dark text-light results container">
+              <p id="cityName"></p>
+              <p id="date"></p>   
+              <p id= "tempHigh">High Of:</p> 
+              <p id="tempLow">Low Of:</p>
+              <p id="humidity">Humidity:</p>          
+              <p id="windSpeed">Wind Speed:</p>         
+              <p id="uvIndex">UV Index:</p>         
+        </div>
+        <!--cards for forecast-->
+    <div class="col-12 d-flex flex-column">
+        
+            
+        <div id="forecast-blocks" class="m-0 row">
+            
+            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
+                <h8 class="card-header">
+                    monday
+                </h8>
+            </div>
+            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
+                <h8 class="card-header">
+                    tuesday
+                </h8>
+            </div>
+            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
+                <h8 class="card-header">
+                    wednesday
+                </h8>
+            </div>
+            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
+                <h8 class="card-header">
+                    thursday
+                </h8>
+            </div>
+            <div class="card col-12 col-md-6 col-xl-2 mb-3 ">
+                <h8 class="card-header">
+                    friday
+                </h8>
+            </div>
+        </div>
+    </div>
+​
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+            <script src="./assets/js/script.js"></script>
+​
+</body>
+​
+</html>
