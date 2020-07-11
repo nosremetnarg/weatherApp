@@ -24,11 +24,13 @@
         //   var iconValue = data['weather'][0]['icon'];
         //   var windValue = data['wind']['speed'];
         //   var humidityValue = data['main']['humidity'];
+        //   var convertedTemp = tempValue * 9/5 - 459.67;
+        //   var convertedTempCelcius = (convertedTemp - 32) * 5/9; 
           
         
         //   main.innerHTML = nameValue;
         //   desc.innerHTML = descValue +" "+ iconValue;
-        //   temp.innerHTML = "Temp - "+tempValue;
+        //   temp.innerHTML = "Temperature - "+ Math.floor(convertedTemp)+ "°F";
         //   wind.innerHTML = "Wind Speed - "+windValue+"mph";
         //   humidity.innerHTML = "Humidity - "+humidityValue+"%";
         // //   weatherIcon.innerHTML = iconValue;
@@ -38,6 +40,9 @@
         
         .catch(err => alert("Wrong city name!"))
         })
+        function setIcons(icon, iconID) {
+          const skycons = new skycons({color: "white"});
+        }
 
           // if (navigator.geolocation) {
         //     navigator.geolocation.getCurrentPosition(position => {
