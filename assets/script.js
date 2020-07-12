@@ -47,13 +47,13 @@ var currentWeather = function () {
         })
         .then(data => {
           console.log(data);
-          var tempValue = data[0]['main']['temp'];
-          var nameValue = data[0]['name'];
-          var descValue = data[0]['weather'][0]['description'];
+          var nameValue = data['main']['name'];
+          var tempValue = data['main']['temp'];
+          var descValue = data['weather'][0]['description'];
           var iconValue = document.createElement('img')
-          iconValue.setAttribute('src', "http://openweathermap.org/img/w/" + data[0]['weather'][0]['icon'] + ".png");
-          var windValue = data[0]['wind']['speed'];
-          var humidityValue = data[0]['main']['humidity'];
+          iconValue.setAttribute('src', "http://openweathermap.org/img/w/" + data['weather'][0]['icon'] + ".png");
+          var windValue = data['wind']['speed'];
+          var humidityValue = data['main']['humidity'];
           var convertedTemp = tempValue * 9 / 5 - 459.67;
           // var convertedTempCelcius = (convertedTemp - 32) * 5/9; 
           main.innerHTML = nameValue;
