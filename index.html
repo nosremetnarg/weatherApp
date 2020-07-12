@@ -11,93 +11,92 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div class="row no-gutters bg-light">
-        <header class="col-12  bg-dark text-light sticky-top ">
-            <h1 class="text-center">
-                <!-- <span class="oi oi-task d-inline d-lg-none"></span> -->
-                Weather Dashboard
-            </h1>
-        </header>
+<body class=" bg-light">
+    <div class="container  bg-light">
+        <div class="row">
+            <header class="col-12  bg-dark text-light sticky-top ">
+                <h1 class="text-center">
+                    <!-- <span class="oi oi-task d-inline d-lg-none"></span> -->
+                    Weather Dashboard
+                </h1>
+            </header>
 
-        <div class="bg-light container">
-            <!-- <div class="container"> -->
-            <div class="row bg-primary">
-                <div id="days" class=" bg-dark col-6 text-light">
-                    <h2>Search for city: </h2>
-                </div>
-                <div class="col-6 bg-dark text-light">
-                    <p id="currentDay" class="lead"></p>
+            <div class="bg-light container">
+                <!-- <div class="container"> -->
+                <div class="row bg-primary">
+                    <div id="days" class=" bg-dark col-6 text-light">
+                        <h2>Search for city: </h2>
+                    </div>
+                    <div class="col-6 bg-dark text-light currentDay">
+                        <h3 id="currentDay" class="lead"></h3>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="row">
-                <div class="card bg-light col-4">
-                    <div class="card-body bg-light align-items-start ">
-                        <div class="form-inline input">
-                            <input class="form-control mr-sm-2 inputValue input_text" id="searchCity" type="text"
-                                placeholder="Enter City Here">
-                            <button class="btn btn-outline-success my-2 my-sm-0 submit" id="searchButton" type="submit"
-                                value="Submit">
-                                Submit
-                            </button>
+            <div class="col-12">
+                <div class="row">
+                    <div class="card bg-light col-4">
+                        <div class="card-body bg-light align-items-start ">
+                            <div class="form-inline input">
+                                <input class="form-control mr-sm-2 inputValue input_text" id="searchCity" type="text"
+                                    placeholder="Enter City Here">
+                                <button class="btn btn-outline-success my-2 my-sm-0 submit" id="searchButton"
+                                    type="submit" value="Submit">
+                                    Submit
+                                </button>
 
-                        </div>
-                        <div class="historySearches history-container" id="historySearches">
-                            <ul class="list-group col-11 mt-3 history">
-                                <!-- <li class="list-group-item">Cras justo odio</li>
+                            </div>
+                            <div class="historySearches history-container" id="historySearches">
+                                <ul class="list-group col-11 mt-3 history">
+                                    <!-- <li class="list-group-item">Cras justo odio</li>
                         <li class="list-group-item">Dapibus ac facilisis in</li>
                         <li class="list-group-item">Morbi leo risus</li> -->
-                            </ul>
+                                </ul>
+                            </div>
+                            <button class="clearStorage" type="submit">Clear Searches</button>
+
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="col">
+                            <div class="card col pb-5">
+                                <h3>Current City:</h3>
+                                <h1 class="name city" id="name"></h1>
+                                <p class="temp"></p>
+                                <p class="humidity"></p>
+                                <p class="wind"></p>
+                                <p class="desc"><span id="icon"></span></p>
+                                <!-- <i class="wi wi-night-sleet"></i> -->
+                            </div>
                         </div>
 
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card col">
-                        <h3>Current City:</h3>
-                        <h1 class="name" id="name"></h1>
-                        <p class="temp"></p>
-                        <p class="humidity"></p>
-                        <p class="wind"></p>
-                        <p class="desc"><span id="icon"></span></p>
-                        <!-- <i class="wi wi-night-sleet"></i> -->
-                    </div>
-                    <div class="card">
                         <div class="row justify-content-around">
-                            <div class="card " id="day1">
-                                <h8 class="card-header bg-dark text-light card1">
+                            <div class="col-lg-12 mt-5">
+                                <div class="card-deck">
+                                    <div class="card " id="day1">
+                                        
+                                    </div>
+                                    <div class="card " id=day2>
+                                        
+                                        <ul id="list-toDo" class="list-group list-group-flush">
+                                        </ul>
+                                    </div>
+                                    <div class="card " id="day3">
+                                        <h8>
 
-                                </h8>
+                                        </h8>
+                                        <p class="temp"></p>
+                                        <ul id="list-toDo" class="list-group list-group-flush">
+                                        </ul>
+                                    </div>
+                                    <div class="card" id="day4">
+                                        
 
-                            </div>
-                            <div class="card " id=day2>
-                                <h8 class="card-header bg-dark text-light" >
-
-                                </h8>
-                                <ul id="list-toDo" class="list-group list-group-flush">
-                                </ul>
-                            </div>
-                            <div class="card " id="day3">
-                                <h8 class="card-header bg-dark text-light">
-
-                                </h8>
-                                <p class="temp"></p>
-                                <ul id="list-toDo" class="list-group list-group-flush">
-                                </ul>
-                            </div>
-                            <div class="card" id="day4">
-                                <h8 class="card-header bg-dark text-light">
-
-                                </h8>
-
-                            </div>
-                            <div class="card" id="day5">
-                                <h8 class="card-header bg-dark text-light">
-                                </h8>
+                                    </div>
+                                    <div class="card" id="day5">
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
