@@ -11,9 +11,58 @@ var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var weatherIcon = document.getElementById('#icon');
-var dayOneTemp = document.getElementById('.dayOneTemp')
+// var dayOneTemp = document.getElementById('.dayOneTemp')
+var listTemp1 = document.getElementById("#list-todo1");
+var dayOneTempValue;
+var currentTime = moment().format("dddd MMMM Do YYYY, h:mm a");
+var currentTimeInt = moment().hour();
+$("#currentDay").text(currentTime);
+const currentDay = document.getElementById('currentDay');
 
+// time
+function updateTime() {
+  const now = moment();
+  const humanReadable = now.local().format("dddd, MMMM Do YYYY, h:mm A");
+  currentDay.textContent = humanReadable;
+}
+setInterval(updateTime, 60000);
+updateTime();
 
+// local storage
+for (let index = 0; index < cities.length; index++) {
+  cityList(cities[index])
+};
+const searchButton = document.querySelector('#searchButton'); // js select
+
+searchButton.addEventListener('click', getSearchTerm) // js event listener
+
+function getSearchTerm() {
+  var searchTerm = document.querySelector('#searchCity').value
+  cityList(searchTerm)
+  searchFunction(searchTerm)
+}
+function cityList(searchTerm) {
+  var listItems = document.createElement("button");
+  listItems.setAttribute("class", "searchPrevious");
+  listItems.addEventListener('click', function () {
+    var searchTool = $(this)[0].innerHTML;
+    searchFunction(searchTool);
+  })
+  var searchTermText = searchTerm;
+  listItems.textContent = searchTermText;
+  var historyList = document.querySelector(".history");
+  historyList.appendChild(listItems);
+};
+
+var saveCities = function () {
+  localStorage.setItem("cities", JSON.stringify(cities));
+  event.preventDefault();
+};
+function searchFunction(searchTerm) {
+  // var searchTerm = document.querySelector('#searchCity').value
+  cities.push(searchTerm)
+  saveCities();
+};
 // searching for single day and 5-day forecast
 button.addEventListener('click', function (name) {
   Promise.all([
@@ -26,12 +75,18 @@ button.addEventListener('click', function (name) {
   }).then(data => {
     console.log(data);
 
-    for (i = 0; i < data[1].list.length; i = i + 8) {
-      console.log("list", data[1].list[i].main.temp_max);
-      // console.log(i);
-      var dayOneTempValue = data[1].list[0].main.temp_max;
-      dayOneTemp.innerHTML = dayOneTempValue;
-    }
+    // for (i = 0; i < data[1].list.length; i = i + 8) {
+    //   console.log("list", data[1].list[i].main.temp_max);
+    //   // console.log(i);
+    //   dayOneTempValue = data[1].list[0].main.temp_max;
+    // }
+
+
+
+    // var dayOneTemp = document.createElement("ul");
+    // dayOneTemp.setAttribute("class", "listTemp1");
+    // dayOneTemp.innerHTML = dayOneTempValue;
+    // listTemp1.appendChild(dayOneTemp);
     var tempValue = data[0]['main']['temp'];
     // var tempValue = data[1]['list']['main']['temp'];
     var nameValue = data[0]['name'];
@@ -52,12 +107,64 @@ button.addEventListener('click', function (name) {
     //   weatherIcon.innerHTML = iconValue;
     input.value = "";
 
-    
+    // 5 day forcast section 
+
+    // day 1 forecast
+    var day1 = (data[1].list[4].dt_txt)
+    var day1Formatted = moment(day1).format('dddd');
+    var tempOneF = (data[1].list[4].main.temp - 273.15) * 1.8 + 32;
+    var tempOne = tempOneF.toFixed(1);
+    $("#day1").html("<h5>" + day1Formatted + "</h5>");
+    $("#day1").append("<p>" + "Temp: " + tempOne + "°F </p>");
+    $("#day1").append("<p>" + "Humidity: " + data[1].list[4].main.humidity + "% </p>");
+    $('#day1').append("<p>" + "Wind Speed: " + Math.floor(data[1].list[4].wind.speed) + "mph");
+
+    // day 2 forecast
+    var day2 = data[1].list[12].dt_txt;
+    var day2Formatted = moment(day2).format('dddd');
+    var tempTwoF = (data[1].list[12].main.temp - 273.15) * 1.8 + 32;
+    var tempTwo = tempTwoF.toFixed(1);
+    $("#day2").html("<h5>" + day2Formatted + "</h5>");
+    $("#day2").append("<p>" + "Temp: " + tempTwo + "°F </p>");
+    $("#day2").append("<p>" + "Humidity: " + data[1].list[12].main.humidity + "% </p>");
+    $('#day2').append("<p>" + "Wind Speed: " + Math.floor(data[1].list[12].wind.speed) + "mph");
+
+    // day 3 forecast
+    var day3 = data[1].list[20].dt_txt;
+    var day3Formatted = moment(day3).format('dddd');
+    var tempThreeF = (data[1].list[20].main.temp - 273.15) * 1.8 + 32;
+    var tempThree = tempThreeF.toFixed(1);
+    $("#day3").html("<h5>" + day3Formatted + "</h5>");
+    $("#day3").append("<p>" + "Temp: " + tempThree + "°F </p>");
+    $("#day3").append("<p>" + "Humidity: " + data[1].list[20].main.humidity + "% </p>");
+    $('#day3').append("<p>" + "Wind Speed: " + Math.floor(data[1].list[20].wind.speed) + "mph");
+
+    // day 4 forecast
+    var day4 = data[1].list[28].dt_txt;
+    var day4Formatted = moment(day4).format('dddd');
+    var tempFourF = (data[1].list[20].main.temp - 273.15) * 1.8 + 32;
+    var tempFour = tempFourF.toFixed(1);
+    $("#day4").html("<h5>" + day4Formatted + "</h5>");
+    $("#day4").append("<p>" + "Temp: " + tempFour + "°F </p>");
+    $("#day4").append("<p>" + "Humidity: " + data[1].list[20].main.humidity + "% </p>");
+    $('#day4').append("<p>" + "Wind Speed: " + Math.floor(data[1].list[28].wind.speed) + "mph");
+
+    var day5 = data[1].list[36].dt_txt;
+    var day5Formatted = moment(day5).format('dddd');
+    var tempFiveF = (data[1].list[20].main.temp - 273.15) * 1.8 + 32;
+    var tempFive = tempFiveF.toFixed(1);
+    $("#day5").html("<h5>" + day5Formatted + "</h5>");
+    $("#day5").append("<p>" + "Temp: " + tempFive + "°F </p>");
+    $("#day5").append("<p>" + "Humidity: " + data[1].list[36].main.humidity + "% </p>");
+    $('#day5').append("<p>" + "Wind Speed: " + Math.floor(data[1].list[36].wind.speed) + "mph");
+
   }).catch(function (error) {
     console.log(error);
     alert("Wrong city name!")
   });
 });
+
+
 
 // function getSearchItem() {
 //   var searchTerm = document.querySelector('#searchCity').value

@@ -27,7 +27,8 @@
                     <h2>Search for city: </h2>
                 </div>
                 <div class="col-6 bg-dark text-light">
-                    placeholder text </div>
+                    <p id="currentDay" class="lead"></p>
+                </div>
             </div>
         </div>
 
@@ -36,16 +37,22 @@
                 <div class="card bg-light col-4">
                     <div class="card-body bg-light align-items-start ">
                         <div class="form-inline input">
-                            <input class="form-control mr-sm-2 inputValue input_text" type="text" placeholder="Search">
-                            <input class="btn btn-outline-success my-2 my-sm-0 submit" type="submit" value="Submit">
+                            <input class="form-control mr-sm-2 inputValue input_text" id="searchCity" type="text"
+                                placeholder="Enter City Here">
+                            <button class="btn btn-outline-success my-2 my-sm-0 submit" id="searchButton" type="submit"
+                                value="Submit">
+                                Submit
+                            </button>
+
                         </div>
-                        <div class="historySearches" id="historySearches">
+                        <div class="historySearches history-container" id="historySearches">
                             <ul class="list-group col-11 mt-3 history">
                                 <!-- <li class="list-group-item">Cras justo odio</li>
                         <li class="list-group-item">Dapibus ac facilisis in</li>
                         <li class="list-group-item">Morbi leo risus</li> -->
                             </ul>
                         </div>
+
                     </div>
                 </div>
 
@@ -59,43 +66,38 @@
                         <p class="desc"><span id="icon"></span></p>
                         <!-- <i class="wi wi-night-sleet"></i> -->
                     </div>
-                    <div class="card col">
+                    <div class="card">
                         <div class="row justify-content-around">
-                            <div class="card">
-                                <h8 class="card-header bg-dark text-light">
-                                    wednesday
+                            <div class="card " id="day1">
+                                <h8 class="card-header bg-dark text-light card1">
+
+                                </h8>
+
+                            </div>
+                            <div class="card " id=day2>
+                                <h8 class="card-header bg-dark text-light" >
+
                                 </h8>
                                 <ul id="list-toDo" class="list-group list-group-flush">
                                 </ul>
                             </div>
-                            <div class="card">
+                            <div class="card " id="day3">
                                 <h8 class="card-header bg-dark text-light">
-                                    wednesday
-                                </h8>
-                                <ul id="list-toDo" class="list-group list-group-flush">
-                                </ul>
-                            </div>
-                            <div class="card ">
-                                <h8 class="card-header bg-dark text-light">
-                                    wednesday
+
                                 </h8>
                                 <p class="temp"></p>
                                 <ul id="list-toDo" class="list-group list-group-flush">
                                 </ul>
                             </div>
-                            <div class="card ">
+                            <div class="card" id="day4">
                                 <h8 class="card-header bg-dark text-light">
-                                    wednesday
+
                                 </h8>
-                                <ul id="list-toDo" class="list-group list-group-flush">
-                                </ul>
+
                             </div>
-                            <div class="card ">
+                            <div class="card" id="day5">
                                 <h8 class="card-header bg-dark text-light">
-                                    wednesday
                                 </h8>
-                                <ul id="list-toDo" class="list-group list-group-flush">
-                                </ul>
                             </div>
                         </div>
                     </div>
