@@ -7,7 +7,7 @@ Allow access to the page and it will upload your current weather.
 
 Search a city and it will provide current weather and a 5-day forcast.
 
-![](assets/Screen%20Shot%202020-07-12%20at%209.34.57 PM.png)
+![](assets/Screen%20Shot%202020-07-12%20at%209.34.57%20PM.png)
 
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
