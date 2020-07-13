@@ -13,6 +13,17 @@ ul.list-group {
     /* justify-content: center; */
     /* align-items: center; */
     /* display: flex; */
-    text-align: center;
-    
+    text-align: center; 
 }
+.red {
+    background-color: rgb(255, 0, 0);
+  }
+  .green {
+    background-color: green;
+  }
+  .yellow {
+    background-color: yellow
+  }
+  .orange {
+    background-color: orange
+  }

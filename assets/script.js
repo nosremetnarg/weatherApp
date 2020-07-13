@@ -12,8 +12,7 @@ var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var weatherIcon = document.getElementById('#icon');
 var clearButton = document.querySelector(".clearStorage");
-// var dayIcon1 = document.querySelector(".dayIcon1");
-// var dayOneTemp = document.getElementById('.dayOneTemp')
+
 var listTemp1 = document.getElementById("#list-todo1");
 var dayOneTempValue;
 var currentTime = moment().format("dddd MMMM Do YYYY, h:mm a");
@@ -47,7 +46,7 @@ var currentWeather = function () {
         })
         .then(data => {
           console.log(data);
-          var nameValue = data['main']['name'];
+          var nameValue = data['name'];
           var tempValue = data['main']['temp'];
           var descValue = data['weather'][0]['description'];
           var iconValue = document.createElement('img')
@@ -88,6 +87,7 @@ function cityList(searchTerm) {
   var listItems = document.createElement("button");
   listItems.setAttribute("class", "searchPrevious");
   listItems.addEventListener('click', function () {
+    console.log("hihihi");
     var searchTool = $(this)[0].innerHTML;
     searchFunction(searchTool);
   })
@@ -101,11 +101,44 @@ var saveCities = function () {
   localStorage.setItem("cities", JSON.stringify(cities));
   event.preventDefault();
 };
+
+// fsearchFunction(searchTerm);
 function searchFunction(searchTerm) {
   // var searchTerm = document.querySelector('#searchCity').value
+  console.log(this);
   cities.push(searchTerm)
   saveCities();
 };
+//retrieve uvIndex and display
+var fetchuvIndex = function (lat, long) {
+  console.log("hi");
+  var apiUrlIndex = "https://api.openweathermap.org/data/2.5/uvi?appid=84b5a7bb34b700650b73c1f82fad0647&lat=" + lat + "&lon=" + long;
+  //fetch uviIndex
+  fetch(apiUrlIndex)
+    .then(function (uviResponse) {
+      return uviResponse.json().then(function (uviData) {
+        console.log(uviData);
+        console.log("hi");
+     
+        const uvIndex = uviData.value
+        var uvIndexDisplay = document.querySelector("#uviLabel");
+        uvIndexDisplay.innerHTML = "UV Index = ";
+        var uviValue = document.querySelector("#uviValue")
+        uviValue.innerHTML = uvIndex
+        uviValue.classList.remove("green", "yellow", "orange", "red")
+        console.log(uvIndex)
+        if (uvIndex <= 3) {
+          uviValue.classList.add("green")
+        } else if (uvIndex >= 3 && uvIndex <= 6) {
+          uviValue.classList.add("yellow")
+        } else if (uvIndex >= 6 && uvIndex <= 8) {
+          uviValue.classList.add("orange")
+        } else {
+          uviValue.classList.add("red")
+        }
+      })
+    })
+}
 
 // clear recent searches
 clearButton.addEventListener('click', function () {
@@ -114,7 +147,7 @@ clearButton.addEventListener('click', function () {
 
 })
 // searching for single day and 5-day forecast
-button.addEventListener('click', function (name) {
+button.addEventListener('click', function () {
   Promise.all([
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=eba23db029bb076b1335ac28a0b028bb'),
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + input.value + '&appid=84b5a7bb34b700650b73c1f82fad0647')
@@ -125,13 +158,19 @@ button.addEventListener('click', function (name) {
   }).then(data => {
     console.log(data);
     console.log(localStorage);
-
+    // function searchFunction(searchTerm) {
+    //   // var searchTerm = document.querySelector('#searchCity').value
+    //   cities.push(searchTerm)
+    //   saveCities();
+    // };
+    // searchFunction();
+    
     // for (i = 0; i < data[1].list.length; i = i + 8) {
     //   console.log("list", data[1].list[i].main.temp_max);
     //   // console.log(i);
     //   dayOneTempValue = data[1].list[0].main.temp_max;
     // }
-
+    fetchuvIndex(lat, long)
     var tempValue = data[0]['main']['temp'];
     var nameValue = data[0]['name'];
     var descValue = data[0]['weather'][0]['description'];
@@ -147,6 +186,7 @@ button.addEventListener('click', function (name) {
     temp.innerHTML = "Temperature - " + Math.floor(convertedTemp) + "°F";
     wind.innerHTML = "Wind Speed - " + windValue + "mph";
     humidity.innerHTML = "Humidity - " + humidityValue + "%";
+
     //   weatherIcon.innerHTML = iconValue;
     input.value = "";
 
