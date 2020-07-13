@@ -1,5 +1,12 @@
 <<<<<<< HEAD
 
+Live link:
+https://nosremetnarg.github.io/weatherApp/
+
+Allow access to the page and it will upload your current weather.
+
+Search a city and it will provide current weather and a 5-day forcast.
+
 
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
@@ -13,6 +20,5 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 =======
-Live link:
-https://nosremetnarg.github.io/weatherApp/
->>>>>>> 567c731bf19d7f8aee7e7730cf755ff7e6cb259c
+
+
